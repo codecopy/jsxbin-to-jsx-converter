@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7AD7C7B3-32F0-4426-A1A5-A647FDB523C1}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>jsxbin_to_jsx</RootNamespace>
+    <AssemblyName>jsxbin_to_jsx</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Jsbeautifier">
+      <HintPath>..\libs\Jsbeautifier.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="JsxbinDecoding\NodeType.cs" />
+    <Compile Include="JsxbinDecoding\ConstDeclarationInfo.cs" />
+    <Compile Include="JsxbinDecoding\AbstractNode.cs" />
+    <Compile Include="JsxbinDecoding\INode.cs" />
+    <Compile Include="JsxbinDecoding\LineInfo.cs" />
+    <Compile Include="JsxbinDecoding\LogicalExpInfo.cs" />
+    <Compile Include="JsxbinDecoding\Nesting.cs" />
+    <Compile Include="JsxbinDecoding\LogicalExp.cs" />
+    <Compile Include="JsxbinDecoding\ScanState.cs" />
+    <Compile Include="JsxbinDecoding\ArrayExpr.cs" />
+    <Compile Include="JsxbinDecoding\ScopeSignature.cs" />
+    <Compile Include="JsxbinDecoding\ConstDeclaration.cs" />
+    <Compile Include="JsxbinDecoding\BinaryNode.cs" />
+    <Compile Include="JsxbinDecoding\SymbolTable.cs" />
+    <Compile Include="JsxbinDecoding\TernaryNode.cs" />
+    <Compile Include="JsxbinDecoding\ExprNode.cs" />
+    <Compile Include="JsxbinDecoding\RootNode.cs" />
+    <Compile Include="JsxbinDecoding\GlobalAssignmentExpr.cs" />
+    <Compile Include="JsxbinDecoding\BinaryExpr.cs" />
+    <Compile Include="JsxbinDecoding\TypeConstants.cs" />
+    <Compile Include="JsxbinDecoding\JumpStatement.cs" />
+    <Compile Include="JsxbinDecoding\DebuggerStatement.cs" />
+    <Compile Include="JsxbinDecoding\DoWhileExpr.cs" />
+    <Compile Include="JsxbinDecoding\FunctionExpr.cs" />
+    <Compile Include="JsxbinDecoding\FunctionArguments.cs" />
+    <Compile Include="JsxbinDecoding\FunctionDeclaration.cs" />
+    <Compile Include="JsxbinDecoding\ObjectExpr.cs" />
+    <Compile Include="JsxbinDecoding\ForStatement.cs" />
+    <Compile Include="JsxbinDecoding\MemberExpr.cs" />
+    <Compile Include="JsxbinDecoding\ArrayIndexingExpr.cs" />
+    <Compile Include="JsxbinDecoding\IndexingIncrementExpr.cs" />
+    <Compile Include="JsxbinDecoding\IfStatement.cs" />
+    <Compile Include="JsxbinDecoding\ForInStatement.cs" />
+    <Compile Include="JsxbinDecoding\ForStatement2.cs" />
+    <Compile Include="JsxbinDecoding\UnknownNode3.cs" />
+    <Compile Include="JsxbinDecoding\FunctionCallExpr.cs" />
+    <Compile Include="JsxbinDecoding\UnknownNode2.cs" />
+    <Compile Include="JsxbinDecoding\UnknownNode1.cs" />
+    <Compile Include="JsxbinDecoding\WithStatement.cs" />
+    <Compile Include="JsxbinDecoding\WhileStatement.cs" />
+    <Compile Include="JsxbinDecoding\IdNode.cs" />
+    <Compile Include="JsxbinDecoding\DeleteExpr.cs" />
+    <Compile Include="JsxbinDecoding\UnaryExpr.cs" />
+    <Compile Include="JsxbinDecoding\ThisExpr.cs" />
+    <Compile Include="JsxbinDecoding\TryStatement.cs" />
+    <Compile Include="JsxbinDecoding\ConditionalExpr.cs" />
+    <Compile Include="JsxbinDecoding\SwitchStatement.cs" />
+    <Compile Include="JsxbinDecoding\AssignmentExpr.cs" />
+    <Compile Include="JsxbinDecoding\IncrementExpr.cs" />
+    <Compile Include="JsxbinDecoding\IdRefExpr.cs" />
+    <Compile Include="JsxbinDecoding\RegExpLiteral.cs" />
+    <Compile Include="JsxbinDecoding\ReturnStatement.cs" />
+    <Compile Include="JsxbinDecoding\BlockStatement.cs" />
+    <Compile Include="JsxbinDecoding\ThrowStatement.cs" />
+    <Compile Include="JsxbinDecoding\UnknownNode4.cs" />
+    <Compile Include="JsxbinDecoding\ValueNode.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
