@@ -1,36 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class BinaryNode : AbstractNode
+    public class XMLDoubleDotDescendantsExpr : AbstractNode
     {
+        Tuple<string, bool> descendants;
+        INode obj;
+
         public override string Marker
         {
-            get
-            {
-                return Convert.ToChar(0x72).ToString();
-            }
+            get { return Convert.ToChar(0x71).ToString(); }
         }
 
         public override NodeType NodeType
         {
             get
             {
-                return NodeType.BinaryNode;
+                return NodeType.XMLDoubleDotDescendantsExpr;
             }
         }
 
         public override void Decode()
         {
-            DecodeReference();
+            descendants = DecodeReference();
+            obj = DecodeNode();
             DecodeNode();
             DecodeNode();
         }
 
         public override string PrettyPrint()
         {
-            throw new Exception("Not defined.");
+            return obj.PrettyPrint() + ".." + descendants.Item1;
         }
     }
 }

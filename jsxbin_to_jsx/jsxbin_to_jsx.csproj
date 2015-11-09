@@ -57,9 +57,9 @@
     <Compile Include="JsxbinDecoding\ArrayExpr.cs" />
     <Compile Include="JsxbinDecoding\ScopeSignature.cs" />
     <Compile Include="JsxbinDecoding\ConstDeclaration.cs" />
-    <Compile Include="JsxbinDecoding\BinaryNode.cs" />
+    <Compile Include="JsxbinDecoding\XMLAccessorExpr.cs" />
     <Compile Include="JsxbinDecoding\SymbolTable.cs" />
-    <Compile Include="JsxbinDecoding\TernaryNode.cs" />
+    <Compile Include="JsxbinDecoding\XMLNamespaceExpr.cs" />
     <Compile Include="JsxbinDecoding\ExprNode.cs" />
     <Compile Include="JsxbinDecoding\RootNode.cs" />
     <Compile Include="JsxbinDecoding\GlobalAssignmentExpr.cs" />
@@ -79,10 +79,10 @@
     <Compile Include="JsxbinDecoding\IfStatement.cs" />
     <Compile Include="JsxbinDecoding\ForInStatement.cs" />
     <Compile Include="JsxbinDecoding\ForStatement2.cs" />
-    <Compile Include="JsxbinDecoding\UnknownNode3.cs" />
+    <Compile Include="JsxbinDecoding\XMLAssignmentExpr.cs" />
     <Compile Include="JsxbinDecoding\FunctionCallExpr.cs" />
     <Compile Include="JsxbinDecoding\UnknownNode2.cs" />
-    <Compile Include="JsxbinDecoding\UnknownNode1.cs" />
+    <Compile Include="JsxbinDecoding\XMLDoubleDotDescendantsExpr.cs" />
     <Compile Include="JsxbinDecoding\WithStatement.cs" />
     <Compile Include="JsxbinDecoding\WhileStatement.cs" />
     <Compile Include="JsxbinDecoding\IdNode.cs" />
@@ -99,7 +99,7 @@
     <Compile Include="JsxbinDecoding\ReturnStatement.cs" />
     <Compile Include="JsxbinDecoding\BlockStatement.cs" />
     <Compile Include="JsxbinDecoding\ThrowStatement.cs" />
-    <Compile Include="JsxbinDecoding\UnknownNode4.cs" />
+    <Compile Include="JsxbinDecoding\SetDefaultXMLNamespaceExpr.cs" />
     <Compile Include="JsxbinDecoding\ValueNode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

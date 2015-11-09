@@ -205,7 +205,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
                     val = "null";
                     break;
                 default:
-                    throw new Exception("Unexpected type in EncryptVariant_decrypt: " + typ.ToString());
+                    throw new Exception("Unexpected Variant type: " + typ.ToString());
             }
             return val.ToString();
         }

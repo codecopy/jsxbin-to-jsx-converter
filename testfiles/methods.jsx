@@ -3,17 +3,17 @@ function px() {
 return (this.prefix + "X");
 }
 function Foo(yz) {
-this.prefix = "a-";
+this.prefix = "a-"
 if ((yz > 0)) {
 this.pyz = function () {
 return (this.prefix + "Y");
-};
+}
 } else {
 this.pyz = function () {
 return (this.prefix + "Z");
-};
 }
-this.m1 = px;
+}
+this.m1 = px
 }
 var foo1 = new Foo(1)
 var foo2 = new Foo(0)

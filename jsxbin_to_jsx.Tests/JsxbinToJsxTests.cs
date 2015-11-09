@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace jsxbin_to_jsx.Tests
 {
     [TestClass]
-    public class JsxToJsxbinTests
+    public class JsxbinToJsxTests
     {
         [TestMethod]
         public void TestJsxbinToJsxConversion()

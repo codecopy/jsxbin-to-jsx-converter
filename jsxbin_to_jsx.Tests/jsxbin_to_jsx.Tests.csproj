@@ -51,7 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="JsxJsxbinPair.cs" />
-    <Compile Include="JsxToJsxbinTests.cs" />
+    <Compile Include="JsxbinToJsxTests.cs" />
     <Compile Include="Testdata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

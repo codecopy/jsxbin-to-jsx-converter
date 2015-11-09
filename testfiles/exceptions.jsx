@@ -2,12 +2,12 @@
 throw new Error("test error throw")
 throw new CustomErr("custom err throw")
 try {
-var x = "trytrytrytry";
+var x = "trytrytrytry"
 } catch (e if (e == "InvalidNameException")) {
-var x = "special catch";
+var x = "special catch"
 } catch (e) {
-var x = "all catch";
+var x = "all catch"
 } finally {
-var x = "finallyblock";
+var x = "finallyblock"
 }
 }

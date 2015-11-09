@@ -12,7 +12,6 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         ArrayIndexingExpr,
         AssignmentExpr,
         BinaryExpr,
-        BinaryNode,
         BlockStatement,
         ConditionalExpr,
         ConstDeclaration,
@@ -40,18 +39,19 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         RegExpLiteral,
         ReturnStatement,
         Root,
+        SetDefaultXMLNamespaceExpr,
         SwitchStatement,
-        TernaryNode,
         ThisExpr,
         ThrowStatement,
         TryStatement,
         UnaryExpr,
-        UnknownNode1,
         UnknownNode2,
-        UnknownNode3,
-        UnknownNode4,
         ValueNode,
         WhileStatement,
-        WithStatement
+        WithStatement,
+        XMLAccessorExpr,
+        XMLAssignmentExpr,
+        XMLDoubleDotDescendantsExpr,
+        XMLNamespaceExpr
     }
 }

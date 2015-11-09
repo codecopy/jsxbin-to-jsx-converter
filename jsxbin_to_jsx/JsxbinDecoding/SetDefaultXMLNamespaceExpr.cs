@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class UnknownNode4 : AbstractNode
+    public class SetDefaultXMLNamespaceExpr : AbstractNode
     {
+        INode setDefaultNamespaceFunctionCall;
+
         public override string Marker
         {
             get { return Convert.ToChar(0x6B).ToString(); }
@@ -17,18 +15,18 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         {
             get
             {
-                return NodeType.UnknownNode4;
+                return NodeType.SetDefaultXMLNamespaceExpr;
             }
         }
 
         public override void Decode()
         {
-            DecodeNode();
+            setDefaultNamespaceFunctionCall = DecodeNode();
         }
 
         public override string PrettyPrint()
         {
-            throw new Exception("Not defined");
+            return setDefaultNamespaceFunctionCall.PrettyPrint();
         }
     }
 }

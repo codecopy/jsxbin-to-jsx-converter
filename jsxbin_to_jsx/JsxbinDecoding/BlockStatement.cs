@@ -56,16 +56,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             string labels = lineInfo.CreateLabelStmt();
             var functionDeclarationsPretty = functionDeclarations.Select(f => f.PrettyPrint()).ToList();
             var variableDeclarationsPretty = variableDeclarations.Select(g => g.PrettyPrint()).ToList();
-            var statementsPretty = statements.Select(f => {
-                // The JsBeautifier incorrectly puts certain statements on the same line leading to syntax errors when no semicolons are present.
-                if (f.NodeType == NodeType.ExprNode)
-                {
-                    return f.PrettyPrint() + ";";
-                } else
-                {
-                    return f.PrettyPrint();
-                }
-            }).ToList();
+            var statementsPretty = statements.Select(f => f.PrettyPrint()).ToList();
             string block = string.Join(
                 Environment.NewLine, functionDeclarationsPretty
                 .Concat(variableDeclarationsPretty)

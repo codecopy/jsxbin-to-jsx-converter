@@ -4,6 +4,8 @@ namespace jsxbin_to_jsx.JsxbinDecoding
 {
     public class UnknownNode2 : AbstractNode
     {
+        Tuple<string, INode> idAndNode;
+
         public override string Marker
         {
             get { return Convert.ToChar(0x73).ToString(); }
@@ -19,7 +21,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
 
         public override void Decode()
         {
-            DecodeIdAndNode();
+            idAndNode = DecodeIdAndNode();
         }
 
         public override string PrettyPrint()
