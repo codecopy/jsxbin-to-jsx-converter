@@ -1,7 +1,7 @@
 # Introduction to JSXBIN to JSX Converter
 JSXBIN is a binary format of JSX, which is a superset of JavaScript made by Adobe for automating certain tasks in Adobe products such as Photoshop. Sometimes it's useful to decode and read JSXBIN files but since there's no official decoder available, here is an alternative instead.
 
-# How To
+# Usage
 1. Download the [latest versîon from the Releases page](https://github.com/autoboosh/jsxbin-to-jsx-converter/releases)
 2. Extract the converter
 2. Run jsxbin_to_jsx on your command line using the following syntax:
