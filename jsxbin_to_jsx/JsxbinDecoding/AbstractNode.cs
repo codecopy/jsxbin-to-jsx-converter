@@ -325,7 +325,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
                     }
                     else
                     {
-                        str = Encoding.UTF8.GetString(new byte[] { bz });
+                        str = Encoding.GetEncoding("iso-8859-1").GetString(new byte[] { bz });
                     }
                 }
                 return str;
