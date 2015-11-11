@@ -33,7 +33,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
 
         public static string Decode(string jsxbin)
         {
-            string normalized = jsxbin.Replace("\n", "").Replace("\r", "");
+            string normalized = jsxbin.Replace("\n", "").Replace("\r", "").Replace("\\", "");
             string noheader = Regex.Replace(normalized, "^@JSXBIN@ES@[\\d.]+@", "");
             scanState = new ScanState(noheader);
             InitializeDecoders(scanState);
