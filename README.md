@@ -12,6 +12,15 @@ jsxbin_to_jsx  --jsxbin <encoded-jsxbin-filepath> --jsx <decoded-jsx-filepath>
 
 The converter automatically formats the code using [JsBeautifier](https://github.com/ghost6991/Jsbeautifier).
 
+The decoder has only been tested with version 2 jsxbin files (@JSXBIN@ES@2.0@). If your file is a different version it is not guaranteed to work.
+
+# Known Issues
+The decoded code has the following issues:
+
+* Nested if statements instead of if-else if-else
+* Excessive use of parentheses
+* postfix/prefix increment operations (e.g. i++) are pretty printied on the same line as the next line, causing compilation issues. The workaround is to manually put a newline after the increment expression
+
 # Tests
 The Tests-Project contains one single test. This test decodes all jsxbin-Files found in the testfiles folder comparing them with their jsx-File equivalent, also found in the same folder.
 
