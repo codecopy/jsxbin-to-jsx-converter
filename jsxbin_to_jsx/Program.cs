@@ -32,16 +32,21 @@ namespace jsxbin_to_jsx
 
         static void Decode(DecodeArgs decoderArgs)
         {
-            Console.WriteLine("Decoding {0}", decoderArgs.JsxbinFilepath);
-            string jsxbin = File.ReadAllText(decoderArgs.JsxbinFilepath, Encoding.ASCII);
-            string jsx = AbstractNode.Decode(jsxbin);
-            // https://github.com/ghost6991/Jsbeautifier
-            jsx = new Beautifier().Beautify(jsx, new BeautifierOptions()
+            try {
+                Console.WriteLine("Decoding {0}", decoderArgs.JsxbinFilepath);
+                string jsxbin = File.ReadAllText(decoderArgs.JsxbinFilepath, Encoding.ASCII);
+                string jsx = AbstractNode.Decode(jsxbin);
+                jsx = new Beautifier().Beautify(jsx, new BeautifierOptions()
+                {
+                    PreserveNewlines = true
+                });
+                File.WriteAllText(decoderArgs.JsxFilepath, jsx, Encoding.UTF8);
+                Console.WriteLine("Jsxbin successfully decoded to {0}", decoderArgs.JsxFilepath);
+            }
+            catch (Exception ex)
             {
-                PreserveNewlines = true
-            });
-            File.WriteAllText(decoderArgs.JsxFilepath, jsx, Encoding.UTF8);
-            Console.WriteLine("Jsxbin successfully decoded to {0}", decoderArgs.JsxFilepath);
+                Console.WriteLine("Decoding failed. If this problem persists, please raise an issue on github. Error message: {0}. Stacktrace: {1}.", ex.Message, ex.StackTrace);
+            }
         }
 
         static DecodeArgs ParseCommandLine(string[] args)
