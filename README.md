@@ -17,7 +17,6 @@ The decoder has only been tested with version 2 jsxbin files (@JSXBIN@ES@2.0@). 
 # Known Issues
 The decoded code has the following issues:
 
-* Nested if statements instead of if-else if-else
 * Excessive use of parentheses
 * postfix/prefix increment operations (e.g. i++) are pretty printied on the same line as the next line, causing compilation issues. The workaround is to manually put a newline after the increment expression
 
