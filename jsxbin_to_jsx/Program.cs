@@ -36,10 +36,7 @@ namespace jsxbin_to_jsx
                 Console.WriteLine("Decoding {0}", decoderArgs.JsxbinFilepath);
                 string jsxbin = File.ReadAllText(decoderArgs.JsxbinFilepath, Encoding.ASCII);
                 string jsx = AbstractNode.Decode(jsxbin);
-                jsx = new Beautifier().Beautify(jsx, new BeautifierOptions()
-                {
-                    PreserveNewlines = true
-                });
+                jsx = new Beautifier().Beautify(jsx);
                 File.WriteAllText(decoderArgs.JsxFilepath, jsx, Encoding.UTF8);
                 Console.WriteLine("Jsxbin successfully decoded to {0}", decoderArgs.JsxFilepath);
             }
