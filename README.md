@@ -14,11 +14,6 @@ The converter automatically formats the code using [JsBeautifier](https://github
 
 The decoder has only been tested with version 2 jsxbin files (@JSXBIN@ES@2.0@). If your file is a different version it is not guaranteed to work.
 
-# Known Issues
-The decoded code has the following issues:
-
-* Excessive use of parentheses
-
 # Tests
 The Tests-Project contains one single test. This test decodes all jsxbin-Files found in the testfiles folder comparing them with their jsx-File equivalent, also found in the same folder.
 

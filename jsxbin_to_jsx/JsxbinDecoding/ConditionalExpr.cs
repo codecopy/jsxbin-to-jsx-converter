@@ -31,7 +31,15 @@ namespace jsxbin_to_jsx.JsxbinDecoding
 
         public override string PrettyPrint()
         {
-            return string.Format("{0} ? ({1}) : ({2})", condition.PrettyPrint(), ifTrue.PrettyPrint(), ifFalse.PrettyPrint());
+            string printed = string.Format("{0} ? {1} : {2}", condition.PrettyPrint(),
+                RequiresParens(ifTrue) ? "(" + ifTrue.PrettyPrint() + ")" : ifTrue.PrettyPrint(),
+                RequiresParens(ifFalse) ? "(" + ifFalse.PrettyPrint() + ")" : ifFalse.PrettyPrint());
+            return printed;
+        }
+
+        bool RequiresParens(INode node)
+        {
+            return node.NodeType == NodeType.ConditionalExpr || node.NodeType == NodeType.ArgumentList;
         }
     }
 }

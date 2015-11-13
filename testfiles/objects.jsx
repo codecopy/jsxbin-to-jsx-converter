@@ -14,6 +14,6 @@ last: "Smith"
 age: 33,
 hobbies: ["chess", "jogging"]
 };
-(dog instanceof anObject);
+dog instanceof anObject;
 }
 }

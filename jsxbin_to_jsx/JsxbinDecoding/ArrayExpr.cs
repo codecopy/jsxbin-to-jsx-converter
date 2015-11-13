@@ -27,7 +27,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
 
         public override string PrettyPrint()
         {
-            FunctionArguments args = (FunctionArguments)arguments;
+            ArgumentList args = (ArgumentList)arguments;
             if (args == null)
             {
                 return "[]";

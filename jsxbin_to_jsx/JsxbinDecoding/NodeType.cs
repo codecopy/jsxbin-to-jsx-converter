@@ -8,6 +8,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
 {
     public enum NodeType
     {
+        ArgumentList,
         ArrayExpr,
         ArrayIndexingExpr,
         AssignmentExpr,
@@ -22,7 +23,6 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         ForInStatement,
         ForStatement,
         ForStatement2,
-        FunctionArguments,
         FunctionCallExpr,
         FunctionDeclaration,
         FunctionExpr,

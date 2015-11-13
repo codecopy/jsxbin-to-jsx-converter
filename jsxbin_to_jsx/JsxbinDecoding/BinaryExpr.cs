@@ -34,25 +34,8 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             right = DecodeNode();
             literalLeft = DecodeVariant();
             literalRight = DecodeVariant();
-
-            string leftExpr;
-            if (left != null && left.NodeType == NodeType.BinaryExpr)
-            {
-                leftExpr = ((BinaryExpr)left).Op;
-            }
-            else
-            {
-                leftExpr = left == null ? literalLeft : left.PrettyPrint();
-            }
-            string rightExpr;
-            if (right != null && right.NodeType == NodeType.BinaryExpr)
-            {
-                rightExpr = ((BinaryExpr)right).Op;
-            }
-            else
-            {
-                rightExpr = right == null ? literalRight : right.PrettyPrint();
-            }
+            var leftExpr = CreateExpr(literalLeft, left);
+            var rightExpr = CreateExpr(literalRight, right);
             bool isUpdateExpr = (leftExpr != null && rightExpr == null) || (leftExpr == null && rightExpr != null);
             if (isUpdateExpr)
             {
@@ -62,13 +45,35 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             }
             else
             {
-                Op = string.Format("({0} {1} {2})", leftExpr, opName, rightExpr);
+                Op = string.Format("{0} {1} {2}", leftExpr, opName, rightExpr);
             }
         }
 
         public override string PrettyPrint()
         {
             return Op;
+        }
+
+        string CreateExpr(string literal, INode expr)
+        {
+            bool requiresParens = false;
+            string actualExpr;
+            if (expr != null && expr.NodeType == NodeType.BinaryExpr)
+            {
+                var binaryExpr = (BinaryExpr)expr;
+                actualExpr = binaryExpr.Op;
+                requiresParens = true;
+                bool isAssociativeOp = (binaryExpr.opName == "*" && opName == "*") || (binaryExpr.opName == "+" && opName == "+");
+                if (isAssociativeOp)
+                {
+                    requiresParens = false;
+                }
+            }
+            else
+            {
+                actualExpr = expr == null ? literal : expr.PrettyPrint();
+            }
+            return requiresParens ? "(" + actualExpr + ")" : actualExpr;
         }
     }
 }

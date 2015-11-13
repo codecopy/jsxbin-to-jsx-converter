@@ -55,7 +55,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             b.AppendLine(string.Format("switch({0}) {{", test.PrettyPrint()));
             for (int i = 0; i < cases.Count; i++)
             {
-                var caseArgs = ((FunctionArguments)cases[i]).Arguments;
+                var caseArgs = ((ArgumentList)cases[i]).Arguments;
                 string caseStmt = "";
                 if (caseArgs.Count > 0)
                 {

@@ -69,7 +69,7 @@
     <Compile Include="JsxbinDecoding\DebuggerStatement.cs" />
     <Compile Include="JsxbinDecoding\DoWhileExpr.cs" />
     <Compile Include="JsxbinDecoding\FunctionExpr.cs" />
-    <Compile Include="JsxbinDecoding\FunctionArguments.cs" />
+    <Compile Include="JsxbinDecoding\ArgumentList.cs" />
     <Compile Include="JsxbinDecoding\FunctionDeclaration.cs" />
     <Compile Include="JsxbinDecoding\ObjectExpr.cs" />
     <Compile Include="JsxbinDecoding\ForStatement.cs" />

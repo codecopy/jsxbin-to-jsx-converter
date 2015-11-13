@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class FunctionArguments : AbstractNode
+    public class ArgumentList : AbstractNode
     {
         bool boolVal;
 
@@ -17,7 +17,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         {
             get
             {
-                return NodeType.FunctionArguments;
+                return NodeType.ArgumentList;
             }
         }
 

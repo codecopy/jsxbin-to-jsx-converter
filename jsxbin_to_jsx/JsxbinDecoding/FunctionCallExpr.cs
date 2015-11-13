@@ -32,7 +32,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
 
         public override string PrettyPrint()
         {
-            FunctionArguments args = (FunctionArguments)argsInfo;
+            ArgumentList args = (ArgumentList)argsInfo;
             string ctor = isConstructorCall ? "new " : "";
             return string.Format("{0}{1}({2})", ctor, functionName.PrettyPrint(), args == null ? "" : string.Join(", ", args.Arguments.Select(a => a.PrettyPrint())));
         }
