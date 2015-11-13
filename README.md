@@ -7,7 +7,13 @@ JSXBIN is a binary format of JSX, which is a superset of JavaScript made by Adob
 2. Run jsxbin_to_jsx on your command line using the following syntax:
 
 ```
-jsxbin_to_jsx  --jsxbin <encoded-jsxbin-filepath> --jsx <decoded-jsx-filepath>
+jsxbin_to_jsx JSXBIN JSX
+```
+
+Example:
+
+```
+jsxbin_to_jsx encoded.jsxbin decoded.jsx
 ```
 
 The converter automatically formats the code using [JsBeautifier](https://github.com/ghost6991/Jsbeautifier).

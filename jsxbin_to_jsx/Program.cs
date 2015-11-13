@@ -10,7 +10,7 @@ namespace jsxbin_to_jsx
     {
         static void Main(string[] args)
         {
-            if (args.Length != 4)
+            if (args.Length != 2)
             {
                 PrintHelp();
                 return;
@@ -27,7 +27,8 @@ namespace jsxbin_to_jsx
         static void PrintHelp()
         {
             Console.WriteLine("Invalid arguments given.");
-            Console.WriteLine("Usage: jsxbin_to_jsx  --jsxbin <encoded-jsxbin-filepath> --jsx <decoded-jsx-filepath>");
+            Console.WriteLine("Usage: jsxbin_to_jsx JSXBIN JSX");
+            Console.WriteLine("Example: jsxbin_to_jsx encoded.jsxbin decoded.jsx");
         }
 
         static void Decode(DecodeArgs decoderArgs)
@@ -49,24 +50,8 @@ namespace jsxbin_to_jsx
         static DecodeArgs ParseCommandLine(string[] args)
         {
             var decoderArgs = new DecodeArgs();
-            for (int argIndex = 0; argIndex < args.Length - 1; argIndex++)
-            {
-                if (args[argIndex] == "--jsxbin")
-                {
-                    decoderArgs.JsxbinFilepath = args[argIndex + 1];
-                    argIndex++;
-                }
-                else if (args[argIndex] == "--jsx")
-                {
-
-                    decoderArgs.JsxFilepath = args[argIndex + 1];
-                    argIndex++;
-                }
-                else
-                {
-                    return null;
-                }
-            }
+            decoderArgs.JsxbinFilepath = args[0];
+            decoderArgs.JsxFilepath = args[1];
             return decoderArgs;
         }
 
