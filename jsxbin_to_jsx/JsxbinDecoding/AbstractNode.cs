@@ -17,6 +17,8 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         public abstract NodeType NodeType { get; }
         public abstract void Decode();
         public abstract string PrettyPrint();
+        public bool PrintStructure { get; set; }
+        public int IndentLevel { get; set; }
 
         protected ScanState ScanState
         {
@@ -31,13 +33,14 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             return ValidIdentifier.IsMatch(identifier);
         }
 
-        public static string Decode(string jsxbin)
+        public static string Decode(string jsxbin, bool printStructure)
         {
             string normalized = jsxbin.Replace("\n", "").Replace("\r", "").Replace("\\", "");
             string noheader = Regex.Replace(normalized, "^@JSXBIN@ES@[\\d.]+@", "");
             scanState = new ScanState(noheader);
             InitializeDecoders(scanState);
             var root = new RootNode();
+            root.PrintStructure = printStructure;
             root.Decode();
             var jsx = root.PrettyPrint();
             return string.Join(Environment.NewLine, jsx);
@@ -101,7 +104,14 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             {
                 var type = decoders[marker.ToString()];
                 INode node = (INode)Activator.CreateInstance(type);
-                node.Decode();                
+                bool ignoreHeaderFunction = this.NodeType == NodeType.Root;
+                if (PrintStructure && !ignoreHeaderFunction)
+                {
+                    Console.WriteLine(new string(' ', 4 * IndentLevel) + node.NodeType.ToString());
+                    node.IndentLevel = IndentLevel + 1;
+                }
+                node.PrintStructure = PrintStructure;
+                node.Decode();
                 return node;
             }
             else
@@ -109,6 +119,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
                 throw new Exception("No decoder found for marker " + marker);
             }
         }
+
         public char GetCurrentAndAdvance(ScanState scanState)
         {
             return GetCurrentAndAdvanceCore(scanState);

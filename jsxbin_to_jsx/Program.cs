@@ -10,14 +10,19 @@ namespace jsxbin_to_jsx
     {
         static void Main(string[] args)
         {
-            if (args.Length != 2)
+            if (args.Length < 2)
             {
                 PrintHelp();
                 return;
             }
-            var parsedArgs = ParseCommandLine(args);
-            if (parsedArgs == null)
+            DecodeArgs parsedArgs = null;
+            try
             {
+                parsedArgs = ParseCommandLine(args);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
                 PrintHelp();
                 return;
             }
@@ -26,17 +31,19 @@ namespace jsxbin_to_jsx
 
         static void PrintHelp()
         {
-            Console.WriteLine("Invalid arguments given.");
-            Console.WriteLine("Usage: jsxbin_to_jsx JSXBIN JSX");
-            Console.WriteLine("Example: jsxbin_to_jsx encoded.jsxbin decoded.jsx");
+            Console.WriteLine("Usage: [-v] jsxbin_to_jsx JSXBIN JSX");
+            Console.WriteLine("Example: -v jsxbin_to_jsx encoded.jsxbin decoded.jsx");
+            Console.WriteLine("Flags:");
+            Console.WriteLine("-v print tree structure to stdout");
         }
 
         static void Decode(DecodeArgs decoderArgs)
         {
-            try {
+            try
+            {
                 Console.WriteLine("Decoding {0}", decoderArgs.JsxbinFilepath);
                 string jsxbin = File.ReadAllText(decoderArgs.JsxbinFilepath, Encoding.ASCII);
-                string jsx = AbstractNode.Decode(jsxbin);
+                string jsx = AbstractNode.Decode(jsxbin, decoderArgs.PrintStructure);
                 jsx = new Beautifier().Beautify(jsx);
                 File.WriteAllText(decoderArgs.JsxFilepath, jsx, Encoding.UTF8);
                 Console.WriteLine("Jsxbin successfully decoded to {0}", decoderArgs.JsxFilepath);
@@ -50,8 +57,21 @@ namespace jsxbin_to_jsx
         static DecodeArgs ParseCommandLine(string[] args)
         {
             var decoderArgs = new DecodeArgs();
-            decoderArgs.JsxbinFilepath = args[0];
-            decoderArgs.JsxFilepath = args[1];
+            int flagOffset = 0;
+            if (args.Length > 2)
+            {
+                if (args[0] == "-v")
+                {
+                    flagOffset++;
+                    decoderArgs.PrintStructure = true;
+                }
+                else
+                {
+                    throw new Exception(string.Format("Flag {0} is not valid.", args[0]));
+                }
+            }
+            decoderArgs.JsxbinFilepath = args[flagOffset];
+            decoderArgs.JsxFilepath = args[flagOffset + 1];
             return decoderArgs;
         }
 
@@ -59,6 +79,7 @@ namespace jsxbin_to_jsx
         {
             public string JsxFilepath { get; set; }
             public string JsxbinFilepath { get; set; }
+            public bool PrintStructure { get; set; }
         }
     }
 }

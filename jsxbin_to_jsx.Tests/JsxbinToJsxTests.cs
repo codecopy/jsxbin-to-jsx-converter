@@ -11,7 +11,7 @@ namespace jsxbin_to_jsx.Tests
         {
             foreach(var p in new Testdata().ReadTestfiles())
             {
-                string actualJsx = AbstractNode.Decode(p.Jsxbin);
+                string actualJsx = AbstractNode.Decode(p.Jsxbin, false);
                 Assert.AreEqual(p.Jsx, actualJsx, string.Format("Decoding JSXBIN does not match expected output in {0}.", p.JsxFilename));
             }
         }

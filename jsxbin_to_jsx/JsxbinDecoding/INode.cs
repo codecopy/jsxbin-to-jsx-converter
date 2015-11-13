@@ -1,7 +1,4 @@
-﻿
-using System.Collections.Generic;
-
-namespace jsxbin_to_jsx.JsxbinDecoding
+﻿namespace jsxbin_to_jsx.JsxbinDecoding
 {
     public interface INode
     {
@@ -9,5 +6,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         string Marker { get; }
         void Decode();
         string PrettyPrint();
+        bool PrintStructure { get; set; }
+        int IndentLevel { get; set; }
     }
 }
