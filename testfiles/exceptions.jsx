@@ -1,5 +1,4 @@
-﻿function () {
-throw new Error("test error throw")
+﻿throw new Error("test error throw")
 throw new CustomErr("custom err throw")
 try {
 var x = "trytrytrytry";
@@ -9,5 +8,4 @@ var x = "special catch";
 var x = "all catch";
 } finally {
 var x = "finallyblock";
-}
 }

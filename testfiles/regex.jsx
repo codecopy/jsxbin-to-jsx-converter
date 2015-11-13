@@ -1,4 +1,2 @@
-﻿function () {
-/testregex/.test("testestest");
+﻿/testregex/.test("testestest");
 "ratatam".replace(/ta/g, "tu");
-}

@@ -1,5 +1,4 @@
-﻿function () {
-function addShorthand(thirdFuncX, thirdFuncY) {
+﻿function addShorthand(thirdFuncX, thirdFuncY) {
 return thirdFuncX + thirdFuncY;
 }
 function subtract(fourthFuncX, fourthFuncY) {
@@ -14,4 +13,3 @@ var tFuncExpr = addFuncExpr(23123, 5345);
 var tShorthand = addShorthand(1, 2);
 var testo = subtract.length;
 var test2 = subtract.getName(5);
-}

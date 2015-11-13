@@ -376,11 +376,6 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             return length == null ? 0 : Int32.Parse(length);
         }
 
-        public int TreatAsNumber(string type)
-        {
-            return type.Length == 0 ? 0 : (int)type[0];
-        }
-
         public LineInfo DecodeLineInfo()
         {
             var info = new LineInfo();
@@ -472,9 +467,10 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             return sig;
         }
 
-        public string DecodeLiteralNumber2()
+        public int DecodeLiteralNumber2()
         {
-            return DecodeLiteral(false, false);
+            string number = DecodeLiteral(true, false);
+            return number == null ? 0 : Int32.Parse(number);
         }
 
         public Tuple<Tuple<string, bool>, INode> DecodeRefAndNode()

@@ -55,7 +55,7 @@
     <Compile Include="JsxbinDecoding\LogicalExp.cs" />
     <Compile Include="JsxbinDecoding\ScanState.cs" />
     <Compile Include="JsxbinDecoding\ArrayExpr.cs" />
-    <Compile Include="JsxbinDecoding\ScopeSignature.cs" />
+    <Compile Include="JsxbinDecoding\FunctionSignature.cs" />
     <Compile Include="JsxbinDecoding\ConstDeclaration.cs" />
     <Compile Include="JsxbinDecoding\XMLAccessorExpr.cs" />
     <Compile Include="JsxbinDecoding\SymbolTable.cs" />

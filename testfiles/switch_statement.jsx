@@ -1,5 +1,4 @@
-﻿function () {
-var a = true;
+﻿var a = true;
 switch(a) {
 case "test1":
 a = 5;
@@ -36,5 +35,4 @@ a = 55;
 break ;
 default:
 
-}
 }

@@ -1,5 +1,4 @@
-﻿function () {
-loop1: for (var a = 0;a < 10; a += 1) {
+﻿loop1: for (var a = 0;a < 10; a += 1) {
 if (a == 4) {
 break loop1;
 }
@@ -20,5 +19,4 @@ break block1;
 alert("World");
 for (var a = 0;a < 10; a += 1) {
 alert("a = " + a);
-}
 }

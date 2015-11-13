@@ -1,5 +1,4 @@
-﻿function () {
-var a = true;
+﻿var a = true;
 if (a) {
 a = "if stmt";
 } else if (a == "anotherOne") {
@@ -16,5 +15,4 @@ b = "c";
 }
 if (c) {
 c = "c";
-}
 }

@@ -24,7 +24,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         public override void Decode()
         {
             varName = DecodeNode().PrettyPrint();
-            addOrSubtract = TreatAsNumber(DecodeLiteralNumber2());
+            addOrSubtract = DecodeLiteralNumber2();
             isPostfix = DecodeBool();
         }
 

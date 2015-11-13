@@ -1,5 +1,4 @@
-﻿function () {
-function px() {
+﻿function px() {
 return this.prefix + "X";
 }
 function Foo(yz) {
@@ -26,4 +25,3 @@ prefix: "c-"
 baz.m4 = px;
 alert("m1/m3/m4 " + foo1.m1() + foo1.m3() + baz.m4());
 foo1.m2();
-}

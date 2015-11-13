@@ -1,5 +1,4 @@
-﻿function () {
-var x = 9;
+﻿var x = 9;
 x += 657;
 x += ((4923 * MyMethod(5)) / AnotherMethod("valvalval"));
 x *= 30;
@@ -14,4 +13,3 @@ b: 1
 };
 obj1.a = 99;
 obj1 = obj2;
-}

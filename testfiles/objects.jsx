@@ -1,5 +1,4 @@
 ﻿function () {
-function () {
 dog = {
 color: "brown",
 size: "large"
@@ -15,5 +14,4 @@ age: 33,
 hobbies: ["chess", "jogging"]
 };
 dog instanceof anObject;
-}
 }

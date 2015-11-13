@@ -1,5 +1,4 @@
-﻿function () {
-var result = "";
+﻿var result = "";
 for (var index = 52342;index < testMethod("noway"); index += -40239) {
 result += "b";
 }
@@ -14,5 +13,4 @@ result += "b";
 }
 for (; ; index /= 40239) {
 result += "b";
-}
 }

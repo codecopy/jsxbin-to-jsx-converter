@@ -1,5 +1,4 @@
 ﻿function () {
-function () {
 var integertest = 482;
 integertest = -238481283123;
 integertest = -323.423;
@@ -15,5 +14,4 @@ var infinityVar = Infinity;
 var notANumberVar = NaN;
 var boolVarTrue = true;
 var boolVarFalse = false;
-}
 }
