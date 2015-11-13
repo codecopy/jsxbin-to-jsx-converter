@@ -39,6 +39,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             {
                 return body;
             }
+            // Filter out parameters that are actually local variables which for some reason count as parameters.
             var paramList = signature.Parameter.Where(p => p.Item2 > 536870000 && p.Item2 < 540000000).Select(p => p.Item1).ToList();
             var paramNames = string.Join(", ", paramList);
             StringBuilder b = new StringBuilder();
