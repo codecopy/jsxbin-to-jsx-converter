@@ -1,3 +1,3 @@
 function () {
-var unicodetest = "雷電"
+var unicodetest = "雷電";
 }

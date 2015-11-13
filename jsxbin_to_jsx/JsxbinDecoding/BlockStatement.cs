@@ -46,7 +46,15 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         {
             string labels = lineInfo.CreateLabelStmt();
             var functionDeclarationsPretty = functionDeclarations.Select(f => f.PrettyPrint()).ToList();
-            var statementsPretty = statements.Select(f => f.PrettyPrint()).ToList();
+            var statementsPretty = statements.Select(f => {
+                bool requiresSemicolon = f.NodeType == NodeType.ExprNode;
+                string expr = f.PrettyPrint();
+                if (requiresSemicolon)
+                {
+                    expr = expr + ";";
+                }
+                return expr;
+            }).ToList();
             string block = string.Join(
                 Environment.NewLine, functionDeclarationsPretty
                 .Concat(statementsPretty));

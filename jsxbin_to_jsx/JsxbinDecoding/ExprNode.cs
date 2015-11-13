@@ -20,6 +20,14 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             }
         }
 
+        public INode Expr
+        {
+            get
+            {
+                return expr;
+            }
+        }
+
         public override void Decode()
         {
             lineInfo = DecodeLineInfo();

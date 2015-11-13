@@ -1,4 +1,4 @@
 ﻿function () {
-var a = 0
-~ (a)
+var a = 0;
+~ (a);
 }
