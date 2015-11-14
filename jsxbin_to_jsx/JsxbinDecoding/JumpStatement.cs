@@ -2,11 +2,19 @@
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class JumpStatement : AbstractNode
+    public class JumpStatement : AbstractNode, IStatement
     {
         LineInfo labelInfo;
         string jmpLocation;
         bool isBreakStatement;
+
+        public int LineNumber
+        {
+            get
+            {
+                return labelInfo.LineNumber;
+            }
+        }
 
         public override string Marker
         {

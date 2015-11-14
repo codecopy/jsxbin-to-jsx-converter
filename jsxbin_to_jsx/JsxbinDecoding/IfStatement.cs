@@ -4,11 +4,19 @@ using System.Text;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class IfStatement : AbstractNode
+    public class IfStatement : AbstractNode, IStatement
     {
         LineInfo body;
         INode test;
         INode tail;
+        
+        public int LineNumber
+        {
+            get
+            {
+                return body.LineNumber;
+            }
+        }
 
         public override string Marker
         {

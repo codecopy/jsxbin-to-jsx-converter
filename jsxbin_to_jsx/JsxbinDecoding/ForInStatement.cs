@@ -3,7 +3,7 @@ using System.Text;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class ForInStatement : AbstractNode
+    public class ForInStatement : AbstractNode, IStatement
     {
         LineInfo bodyInfo;
         string loopVarName;
@@ -11,6 +11,14 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         int part25;
         string part3;
         bool isForEachLoop;
+
+        public int LineNumber
+        {
+            get
+            {
+                return bodyInfo.LineNumber;
+            }
+        }
 
         public override string Marker
         {

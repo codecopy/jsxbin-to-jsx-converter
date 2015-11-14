@@ -3,10 +3,18 @@ using System.Collections.Generic;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class FunctionExpr : AbstractNode
+    public class FunctionExpr : AbstractNode, IStatement
     {
         LineInfo lineInfo;
         INode expr;
+
+        public int LineNumber
+        {
+            get
+            {
+                return lineInfo.LineNumber;
+            }
+        }
 
         public override string Marker
         {
@@ -29,7 +37,8 @@ namespace jsxbin_to_jsx.JsxbinDecoding
 
         public override string PrettyPrint()
         {
-            return expr.PrettyPrint();
+            string resultingExpr = expr.PrettyPrint();
+            return resultingExpr;
         }
     }
 }

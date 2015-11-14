@@ -45,6 +45,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JsxbinDecoding\IStatement.cs" />
     <Compile Include="JsxbinDecoding\NodeType.cs" />
     <Compile Include="JsxbinDecoding\ConstDeclarationInfo.cs" />
     <Compile Include="JsxbinDecoding\AbstractNode.cs" />

@@ -3,9 +3,18 @@ using System.Text;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class TryStatement : AbstractNode
+    public class TryStatement : AbstractNode, IStatement
     {
+        LineInfo tryBlock;
         string expr;
+
+        public int LineNumber
+        {
+            get
+            {
+                return tryBlock.LineNumber;
+            }
+        }
 
         public override string Marker
         {
@@ -22,7 +31,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
 
         public override void Decode()
         {
-            var tryBlock = DecodeLineInfo();
+            tryBlock = DecodeLineInfo();
             int length = DecodeLength();
             var finallyBlock = DecodeNode();
             StringBuilder b = new StringBuilder();

@@ -5,12 +5,20 @@ using System.Text;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class SwitchStatement : AbstractNode
+    public class SwitchStatement : AbstractNode, IStatement
     {
         LineInfo labelInfo;
         INode test;
         List<INode> cases;
         List<INode> bodies;
+
+        public int LineNumber
+        {
+            get
+            {
+                return labelInfo.LineNumber;
+            }
+        }
 
         public override string Marker
         {

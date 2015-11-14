@@ -3,10 +3,18 @@ using System.Text;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class WhileStatement : AbstractNode
+    public class WhileStatement : AbstractNode, IStatement
     {
         LineInfo bodyInfo;
         INode condInfo;
+
+        public int LineNumber
+        {
+            get
+            {
+                return bodyInfo.LineNumber;
+            }
+        }
 
         public override string Marker
         {

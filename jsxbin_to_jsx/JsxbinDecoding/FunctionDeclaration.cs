@@ -4,11 +4,19 @@ using System.Text;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class FunctionDeclaration : AbstractNode
+    public class FunctionDeclaration : AbstractNode, IStatement
     {
         LineInfo bodyInfo;
         FunctionSignature signature;
         int type;
+
+        public int LineNumber
+        {
+            get
+            {
+                return bodyInfo.LineNumber;
+            }
+        }
 
         public override string Marker
         {

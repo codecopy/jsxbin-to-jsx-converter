@@ -3,12 +3,20 @@ using System.Text;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class ForStatement2 : AbstractNode
+    public class ForStatement2 : AbstractNode, IStatement
     {
         LineInfo bodyInfo;
         INode initInfo;
         INode testInfo;
         INode updateInfo;
+
+        public int LineNumber
+        {
+            get
+            {
+                return bodyInfo.LineNumber;
+            }
+        }
 
         public override string Marker
         {

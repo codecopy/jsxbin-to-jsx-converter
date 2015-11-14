@@ -2,10 +2,18 @@
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class ExprNode : AbstractNode
+    public class ExprNode : AbstractNode, IStatement
     {
         LineInfo lineInfo;
         INode expr;
+
+        public int LineNumber
+        {
+            get
+            {
+                return lineInfo.LineNumber;
+            }
+        }
 
         public override string Marker
         {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class ForStatement : AbstractNode
+    public class ForStatement : AbstractNode, IStatement
     {
         LineInfo bodyInfo;
         INode loopVarInfo;
@@ -13,6 +13,14 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         string stepSize;
         int part6;
         string compOp;
+
+        public int LineNumber
+        {
+            get
+            {
+                return bodyInfo.LineNumber;
+            }
+        }
 
         public override string Marker
         {

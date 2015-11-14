@@ -4,10 +4,18 @@ using System.Text;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class DoWhileExpr : AbstractNode
+    public class DoWhileExpr : AbstractNode, IStatement
     {
         LineInfo body;
         string test;
+
+        public int LineNumber
+        {
+            get
+            {
+                return body.LineNumber;
+            }
+        }
 
         public override string Marker
         {

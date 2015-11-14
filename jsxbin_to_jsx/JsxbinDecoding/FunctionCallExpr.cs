@@ -34,7 +34,8 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         {
             ArgumentList args = (ArgumentList)argsInfo;
             string ctor = isConstructorCall ? "new " : "";
-            return string.Format("{0}{1}({2})", ctor, functionName.PrettyPrint(), args == null ? "" : string.Join(", ", args.Arguments.Select(a => a.PrettyPrint())));
+            string callExpr = string.Format("{0}{1}({2})", ctor, functionName.PrettyPrint(), args == null ? "" : string.Join(", ", args.Arguments.Select(a => a.PrettyPrint())));
+            return callExpr;
         }
     }
 }

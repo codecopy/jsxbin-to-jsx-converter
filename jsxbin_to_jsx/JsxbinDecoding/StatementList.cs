@@ -4,12 +4,19 @@ using System.Linq;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class StatementList : AbstractNode
+    public class StatementList : AbstractNode, IStatement
     {
         LineInfo lineInfo;
         int length;
-        List<INode> functionDeclarations;
         List<INode> statements;
+
+        public int LineNumber
+        {
+            get
+            {
+                return lineInfo.LineNumber;
+            }
+        }
 
         public override string Marker
         {
@@ -31,12 +38,11 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         {
             lineInfo = DecodeBody();
             length = DecodeLength();
-            functionDeclarations = new List<INode>();
             statements = new List<INode>();
             int i = length;
             while (i > 0)
             {
-                functionDeclarations.Add(DecodeNode());
+                statements.Add(DecodeNode());
                 i--;
             }
             statements.AddRange(DecodeChildren());
@@ -45,8 +51,9 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         public override string PrettyPrint()
         {
             string labels = lineInfo.CreateLabelStmt();
-            var functionDeclarationsPretty = functionDeclarations.Select(f => f.PrettyPrint()).ToList();
-            var statementsPretty = statements.Select(f => {
+            var statementsOrdered = statements.OrderBy(s => ((IStatement)s).LineNumber);
+            var statementsPretty = statementsOrdered.Select(f =>
+            {
                 bool requiresSemicolon = f.NodeType == NodeType.ExprNode;
                 string expr = f.PrettyPrint();
                 if (requiresSemicolon)
@@ -55,9 +62,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
                 }
                 return expr;
             }).ToList();
-            string block = string.Join(
-                Environment.NewLine, functionDeclarationsPretty
-                .Concat(statementsPretty));
+            string block = string.Join(Environment.NewLine, statementsPretty);
             return labels + block;
         }
     }
