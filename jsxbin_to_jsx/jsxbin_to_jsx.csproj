@@ -97,7 +97,7 @@
     <Compile Include="JsxbinDecoding\IdRefExpr.cs" />
     <Compile Include="JsxbinDecoding\RegExpLiteral.cs" />
     <Compile Include="JsxbinDecoding\ReturnStatement.cs" />
-    <Compile Include="JsxbinDecoding\BlockStatement.cs" />
+    <Compile Include="JsxbinDecoding\StatementList.cs" />
     <Compile Include="JsxbinDecoding\ThrowStatement.cs" />
     <Compile Include="JsxbinDecoding\SetDefaultXMLNamespaceExpr.cs" />
     <Compile Include="JsxbinDecoding\ValueNode.cs" />

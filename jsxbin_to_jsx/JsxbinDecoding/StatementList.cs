@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class BlockStatement : AbstractNode
+    public class StatementList : AbstractNode
     {
         LineInfo lineInfo;
         int length;
@@ -23,7 +23,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         {
             get
             {
-                return NodeType.BlockStatement;
+                return NodeType.StatementList;
             }
         }
 
