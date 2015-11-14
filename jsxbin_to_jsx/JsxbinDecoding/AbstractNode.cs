@@ -50,7 +50,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         {
             var chr = GetCurrentAndAdvanceCore(scanState.Clone());
             string number = "";
-            if (IsHex(chr, 0x38))
+            if (IsHex(chr, Constants.MARKER_NUMBER_8_BYTES))
             {
                 var val = GetCurrentAndAdvanceCore(scanState);
                 number = DecodeNumberCore(8, false);
@@ -65,11 +65,11 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         public bool DecodeBool()
         {
             var str = GetCurrentAndAdvanceCore(scanState);
-            if (str == 0x66)
+            if (str == Constants.BOOL_FALSE)
             {
                 return false;
             }
-            else if (str == 0x74)
+            else if (str == Constants.BOOL_TRUE)
             {
                 return true;
             }
@@ -96,7 +96,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         public INode DecodeNode()
         {
             char marker = GetCurrentAndAdvance(scanState);
-            if (IsHex(marker, 0x6E))
+            if (IsHex(marker, Constants.MARKER_HAS_NO_VARIANT))
             {
                 return null;
             }
@@ -156,7 +156,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         public string DecodeVariant()
         {
             var chr = GetCurrentAndAdvance(scanState.Clone());
-            if (IsHex(chr, TypeConstants.MARKER_HAS_NO_VARIANT))
+            if (IsHex(chr, Constants.MARKER_HAS_NO_VARIANT))
             {
                 GetCurrentAndAdvance(scanState);
                 return null;
@@ -175,7 +175,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         public string DecodeId()
         {
             char marker = GetCurrentAndAdvanceCore(scanState.Clone());
-            if (!IsHex(marker, 0x7A))
+            if (!IsHex(marker, Constants.MARKER_ID_REFERENCE))
             {
                 var id = DecodeLength().ToString();
                 return scanState.GetSymbol(id);
@@ -294,12 +294,12 @@ namespace jsxbin_to_jsx.JsxbinDecoding
                 return null;
             }
             bool twosComplement = false;
-            if (scanState.IsHex(0x79))
+            if (scanState.IsHex(Constants.MARKER_NEGATIVE_NUMBER))
             {
                 twosComplement = true;
                 GetCurrentAndAdvanceCore(scanState);
             }
-            if (scanState.IsHex(0x34))
+            if (scanState.IsHex(Constants.MARKER_NUMBER_4_BYTES))
             {
                 GetCurrentAndAdvanceCore(scanState);
                 string nr = DecodeNumberCore(4, twosComplement);
@@ -309,7 +309,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
                 }
                 return nr;
             }
-            else if (scanState.IsHex(0x32))
+            else if (scanState.IsHex(Constants.MARKER_NUMBER_2_BYTES))
             {
                 GetCurrentAndAdvanceCore(scanState);
                 string nr = DecodeNumberCore(2, twosComplement);
