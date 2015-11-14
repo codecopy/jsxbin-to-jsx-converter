@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class GlobalAssignmentExpr : AbstractNode
+    public class MemberAssignmentExpr : AbstractNode
     {
         INode varNode;
         INode expr;
@@ -19,7 +19,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         {
             get
             {
-                return NodeType.GlobalAssignmentExpr;
+                return NodeType.MemberAssignmentExpr;
             }
         }
 

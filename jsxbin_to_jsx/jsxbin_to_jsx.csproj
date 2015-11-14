@@ -63,7 +63,7 @@
     <Compile Include="JsxbinDecoding\XMLNamespaceExpr.cs" />
     <Compile Include="JsxbinDecoding\ExprNode.cs" />
     <Compile Include="JsxbinDecoding\RootNode.cs" />
-    <Compile Include="JsxbinDecoding\GlobalAssignmentExpr.cs" />
+    <Compile Include="JsxbinDecoding\MemberAssignmentExpr.cs" />
     <Compile Include="JsxbinDecoding\BinaryExpr.cs" />
     <Compile Include="JsxbinDecoding\Constants.cs" />
     <Compile Include="JsxbinDecoding\JumpStatement.cs" />
