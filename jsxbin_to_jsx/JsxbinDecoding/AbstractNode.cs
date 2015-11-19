@@ -384,7 +384,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         public int DecodeLength()
         {
             var length = DecodeLiteral(true, false);
-            return length == null ? 0 : Int32.Parse(length);
+            return length == null ? 0 : Math.Abs(Int32.Parse(length));
         }
 
         public LineInfo DecodeLineInfo()
