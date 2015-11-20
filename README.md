@@ -29,7 +29,7 @@ To view the parse tree created by the decoder use the -v flag:
 jsxbin_to_jsx -v encoded.jsxbin decoded.jsx > debug.txt
 ```
 
-This .jsx file...
+Decoding the following code:
 
 ```javascript
 var test = 5;
@@ -38,14 +38,14 @@ if (test > 5) {
 }
 ```
 
-...would print the following parse tree:
+translates into the following parse tree:
 
 ```
-BlockStatement
+StatementList
     ExprNode
         AssignmentExpr
     IfStatement
-        BlockStatement
+        StatementList
             ExprNode
                 FunctionCallExpr
                     IdNode
