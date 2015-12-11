@@ -41,7 +41,6 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         public override string PrettyPrint()
         {
             bool isHeader = signature.Header5 == 1;
-            bool isParameterOrderReversed = signature.Header5 == 2;
             string body = bodyInfo.CreateBody();
             // Header seems to imply an automatically added "wrapper" function which is not really needed.
             if (isHeader)
@@ -49,9 +48,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
                 return body;
             }
             // Filter out parameters that are actually local variables which for some reason count as parameters.
-            var paramList = signature.Parameter.Where(p => p.Item2 > 536870000 && p.Item2 < 540000000).Select(p => p.Item1).ToList();
-            if (isParameterOrderReversed)
-                paramList.Reverse();
+            var paramList = signature.Parameter.OrderBy(p => p.Item2).Where(p => p.Item2 > 536870000 && p.Item2 < 540000000).Select(p => p.Item1).ToList();
             var paramNames = string.Join(", ", paramList);
             StringBuilder b = new StringBuilder();
             b.AppendLine(string.Format("function {0}({1}) {{", signature.Name, paramNames));
