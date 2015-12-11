@@ -7,12 +7,23 @@ namespace jsxbin_to_jsx.Tests
     public class JsxbinToJsxTests
     {
         [TestMethod]
-        public void TestJsxbinToJsxConversion()
+        public void TestVersion1()
         {
-            foreach(var p in new Testdata().ReadTestfiles())
+            ExecuteTests("v1.0");
+        }
+
+        [TestMethod]
+        public void TestVersion2()
+        {
+            ExecuteTests("v2.0");
+        }
+
+        private void ExecuteTests(string version)
+        {
+            foreach (var p in new Testdata().ReadTestfiles(version))
             {
                 string actualJsx = AbstractNode.Decode(p.Jsxbin, false);
-                Assert.AreEqual(p.Jsx, actualJsx, string.Format("Decoding JSXBIN does not match expected output in {0}.", p.JsxFilename));
+                Assert.AreEqual(p.Jsx, actualJsx, string.Format("Decoding JSXBIN {0} does not match expected output in {1}.", version, p.JsxFilename));
             }
         }
     }

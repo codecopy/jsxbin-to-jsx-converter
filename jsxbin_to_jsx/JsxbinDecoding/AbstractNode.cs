@@ -8,17 +8,28 @@ namespace jsxbin_to_jsx.JsxbinDecoding
 {
     public abstract class AbstractNode : INode
     {
+        public const double ALL_VERSIONS = 0;
         private const string alphabet_lower = "ghijklmn";
         private const string alphabet_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdef";
         private static readonly Dictionary<string, Type> decoders = new Dictionary<string, Type>();
         private static ScanState scanState;
         private static readonly Regex ValidIdentifier = new Regex("^[a-zA-Z_$][0-9a-zA-Z_$]*$", RegexOptions.Compiled);
+        private static IReferenceDecoder referenceDecoder;
+
         public abstract string Marker { get; }
         public abstract NodeType NodeType { get; }
         public abstract void Decode();
         public abstract string PrettyPrint();
         public bool PrintStructure { get; set; }
         public int IndentLevel { get; set; }
+
+        public virtual double JsxbinVersion
+        {
+            get
+            {
+                return ALL_VERSIONS;
+            }
+        }
 
         protected ScanState ScanState
         {
@@ -36,9 +47,13 @@ namespace jsxbin_to_jsx.JsxbinDecoding
         public static string Decode(string jsxbin, bool printStructure)
         {
             string normalized = jsxbin.Replace("\n", "").Replace("\r", "").Replace("\\", "");
+            Match versionMatch = Regex.Match(normalized, "^@JSXBIN@ES@([\\d.]+)@");
+            double version = ALL_VERSIONS;
+            if (versionMatch.Success)
+                version = double.Parse(versionMatch.Groups[1].Value);
             string noheader = Regex.Replace(normalized, "^@JSXBIN@ES@[\\d.]+@", "");
             scanState = new ScanState(noheader);
-            InitializeDecoders(scanState);
+            InitializeDecoders(scanState, version);
             var root = new RootNode();
             root.PrintStructure = printStructure;
             root.Decode();
@@ -79,7 +94,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             }
         }
 
-        private static void InitializeDecoders(ScanState scanState)
+        private static void InitializeDecoders(ScanState scanState, double version)
         {
             decoders.Clear();
             var type = typeof(INode);
@@ -89,8 +104,13 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             foreach (var t in types)
             {
                 INode n = (INode)Activator.CreateInstance(t);
-                decoders.Add(n.Marker, t);
+                if (n.JsxbinVersion == ALL_VERSIONS || n.JsxbinVersion == version)
+                    decoders.Add(n.Marker, t);
             }
+            if (version == 1.0)
+                referenceDecoder = new ReferenceDecoderVersion1();
+            else
+                referenceDecoder = new ReferenceDecoderVersion2();                
         }
 
         public INode DecodeNode()
@@ -407,10 +427,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
 
         public Tuple<string, bool> DecodeReference()
         {
-            List<string> res = new List<string>();
-            var id = DecodeId();
-            var flag = DecodeBool();
-            return Tuple.Create(id, flag);
+            return referenceDecoder.Decode(this);
         }
 
         public LineInfo DecodeBody()

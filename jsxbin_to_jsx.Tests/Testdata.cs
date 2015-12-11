@@ -9,10 +9,10 @@ namespace jsxbin_to_jsx.Tests
     public class Testdata
     {
 
-        public IEnumerable<JsxJsxbinPair> ReadTestfiles()
+        public IEnumerable<JsxJsxbinPair> ReadTestfiles(string versionFolder)
         {
             string basePath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
-            string TestfilesDirectory = Path.Combine(basePath, @"testfiles");
+            string TestfilesDirectory = Path.Combine(basePath, "testfiles", versionFolder);
             // *.jsx matches .jsxbin files as well, which is not what we want.
             // http://www.codeproject.com/Questions/152289/Directory-Get-Files-search-pattern-problem
             var jsxfiles = Directory.EnumerateFiles(TestfilesDirectory, "*.jsx").Where(f => f.EndsWith(".jsx")).Select(f => new FileInfo(f));

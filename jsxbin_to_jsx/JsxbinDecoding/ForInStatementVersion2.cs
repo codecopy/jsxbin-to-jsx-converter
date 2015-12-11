@@ -3,7 +3,7 @@ using System.Text;
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class ForInStatement : AbstractNode, IStatement
+    public class ForInStatementVersion2 : AbstractNode, IStatement
     {
         LineInfo bodyInfo;
         string loopVarName;
@@ -30,6 +30,14 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             get
             {
                 return NodeType.ForInStatement;
+            }
+        }
+
+        public override double JsxbinVersion
+        {
+            get
+            {
+                return 2.0;
             }
         }
 

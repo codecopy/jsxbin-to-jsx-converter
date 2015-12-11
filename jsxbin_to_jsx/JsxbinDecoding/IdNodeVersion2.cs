@@ -2,7 +2,7 @@
 
 namespace jsxbin_to_jsx.JsxbinDecoding
 {
-    public class IdNode : AbstractNode
+    public class IdNodeVersion2 : AbstractNode
     {
         string id;
         bool boolVal;
@@ -17,6 +17,14 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             get
             {
                 return NodeType.IdNode;
+            }
+        }
+
+        public override double JsxbinVersion
+        {
+            get
+            {
+                return 2.0;
             }
         }
 

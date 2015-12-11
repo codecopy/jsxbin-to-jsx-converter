@@ -8,5 +8,8 @@
         string PrettyPrint();
         bool PrintStructure { get; set; }
         int IndentLevel { get; set; }
+        double JsxbinVersion { get; }
+        string DecodeId();
+        bool DecodeBool();
     }
 }
