@@ -20,8 +20,6 @@ jsxbin_to_jsx encoded.jsxbin decoded.jsx
 
 The converter automatically formats the code using [JsBeautifier](https://github.com/ghost6991/Jsbeautifier).
 
-The decoder has only been tested with version 2 jsxbin files (@JSXBIN@ES@2.0@). If your file is a different version it is not guaranteed to work.
-
 # Debugging
 To view the parse tree created by the decoder use the -v flag:
 
