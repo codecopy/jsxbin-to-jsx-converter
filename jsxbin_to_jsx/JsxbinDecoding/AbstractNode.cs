@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -50,7 +51,7 @@ namespace jsxbin_to_jsx.JsxbinDecoding
             Match versionMatch = Regex.Match(normalized, "^@JSXBIN@ES@([\\d.]+)@");
             double version = ALL_VERSIONS;
             if (versionMatch.Success)
-                version = double.Parse(versionMatch.Groups[1].Value);
+                version = double.Parse(versionMatch.Groups[1].Value, CultureInfo.InvariantCulture);
             string noheader = Regex.Replace(normalized, "^@JSXBIN@ES@[\\d.]+@", "");
             scanState = new ScanState(noheader);
             InitializeDecoders(scanState, version);
